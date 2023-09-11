@@ -33,7 +33,7 @@ class App extends Component {
             </Col>
           ) : (
             <Col xs={6}>
-              <p className="sticky-top  ">Seleziona un libro per vedere i commenti!</p>
+              <p className="sticky-top">Seleziona un libro per vedere i commenti!</p>
             </Col>
           )}
         </Row>
