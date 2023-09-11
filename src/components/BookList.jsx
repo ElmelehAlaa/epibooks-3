@@ -1,13 +1,12 @@
 import { Component } from "react";
 import SingleBook from "./SingleBook";
-import { Col, Form, Row } from "react-bootstrap";
-import CommentArea from "./CommentArea";
+import { Col, Form } from "react-bootstrap";
 
 class BookList extends Component {
   state = {
     searchQuery: "",
-    selected: false,
-    asinSelected: "",
+    // selected: false,
+    // asinSelected: null,
   };
   setAsinSelected = (value) => {
     this.setState({ asinSelected: value });
@@ -15,46 +14,32 @@ class BookList extends Component {
   render() {
     return (
       <>
-        <Row>
-          <Col>
-            <Form.Group>
-              <Form.Label>Search a book</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Search here"
-                value={this.state.searchQuery}
-                onChange={(e) => this.setState({ searchQuery: e.target.value })}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={6}>
-            <div className="d-flex flex-wrap">
-              {this.props.books
-                .filter((book) => book.title.toLowerCase().includes(this.state.searchQuery))
-                .map((book) => (
-                  <SingleBook
-                    book={book}
-                    key={book.asin}
-                    onClick={() =>
-                      this.setState({ selected: !this.state.selected, asinSelected: this.props.book.asin })
-                    }
-                  />
-                ))}
-            </div>
-          </Col>
+        <Col>
+          <Form.Group>
+            <Form.Label>Search a book</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Search here"
+              value={this.state.searchQuery}
+              onChange={(e) => this.setState({ searchQuery: e.target.value })}
+            />
+          </Form.Group>
+        </Col>
 
-          {this.state.selected ? (
-            <Col xs={6}>
-              <CommentArea asin={this.state.asinSelected} />
-            </Col>
-          ) : (
-            <Col xs={6}>
-              <p>Seleziona un libro per vedere i commenti!</p>
-            </Col>
-          )}
-        </Row>
+        <Col xs={12}>
+          <div className="d-flex flex-wrap">
+            {this.props.books
+              .filter((book) => book.title.toLowerCase().includes(this.state.searchQuery))
+              .map((book) => (
+                <SingleBook
+                  // onClick={() => this.setState({ selected: !this.state.selected })}
+                  book={book}
+                  key={book.asin}
+                  setAsin={this.props.setAsin}
+                />
+              ))}
+          </div>
+        </Col>
       </>
     );
   }

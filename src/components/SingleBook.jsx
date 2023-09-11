@@ -11,7 +11,10 @@ class SingleBook extends Component {
     return (
       <>
         <Card
-          onClick={() => this.setState({ selected: !this.state.selected })}
+          onClick={() => {
+            this.setState({ selected: !this.state.selected });
+            this.props.setAsin(this.props.book.asin);
+          }}
           style={{ width: "46%", paddingRight: "20px", border: this.state.selected ? "3px solid red" : "none" }}
         >
           <Card.Img variant="top" src={this.props.book.img} />

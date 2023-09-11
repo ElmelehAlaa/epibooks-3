@@ -9,6 +9,7 @@ class CommentArea extends Component {
     comments: [],
     isLoading: true,
     isError: false,
+    asin: this.props.asin,
   };
   // const checkAsinSelected = value => (value === this.props.sele)
   fetchComments = async () => {
