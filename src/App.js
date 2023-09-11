@@ -18,13 +18,13 @@ class App extends Component {
   setAsin = (asin) => this.setState({ selectedAsin: asin });
   render() {
     return (
-      <Container>
+      <Container style={{ maxWidth: "100%" }}>
         <MyNav />
         <MyJumbotron />
         {/* <AllTheBooks /> */}
         <Row>
           <Col xs={6}>
-            <BookList books={fantasy} setAsin={this.setAsin} />
+            <BookList books={fantasy} setAsin={this.setAsin} asin={this.state.selectedAsin} />
           </Col>
 
           {this.state.selectedAsin ? (
@@ -33,7 +33,9 @@ class App extends Component {
             </Col>
           ) : (
             <Col xs={6}>
-              <p className="sticky-top">Seleziona un libro per vedere i commenti!</p>
+              <p className="sticky-top" style={{ top: "50px" }}>
+                Seleziona un libro per vedere i commenti!
+              </p>
             </Col>
           )}
         </Row>

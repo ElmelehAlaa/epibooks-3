@@ -9,7 +9,6 @@ class CommentArea extends Component {
     comments: [],
     isLoading: true,
     isError: false,
-    asin: this.props.asin,
   };
   // const checkAsinSelected = value => (value === this.props.sele)
   fetchComments = async () => {
@@ -46,6 +45,7 @@ class CommentArea extends Component {
   render() {
     return (
       <div className="text-center sticky-top" style={{ top: "50px" }}>
+        <h2 className="text-center">Sezione Commenti</h2>
         {this.state.isLoading && <Loading />}
         {this.state.isError && <Error />}
         <AddComment asin={this.props.asin} />

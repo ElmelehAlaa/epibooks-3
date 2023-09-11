@@ -21,7 +21,7 @@ const SingleComment = ({ comment }) => {
   };
 
   return (
-    <ListGroup.Item>
+    <ListGroup.Item style={{ fontWeight: "600", fontSize: "20px" }}>
       {comment.comment}
       <Button variant="danger" className="ml-2" onClick={() => deleteComment(comment._id)}>
         Delete

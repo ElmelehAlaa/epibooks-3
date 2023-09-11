@@ -36,6 +36,7 @@ class BookList extends Component {
                   book={book}
                   key={book.asin}
                   setAsin={this.props.setAsin}
+                  asin={this.props.asin}
                 />
               ))}
           </div>
